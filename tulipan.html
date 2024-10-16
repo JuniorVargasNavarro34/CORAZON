@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Dinámicas</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .flower {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #ff69b4, #ff1493);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+            animation: bloom 3s infinite ease-in-out, shine 1.5s infinite alternate;
+        }
+
+        @keyframes bloom {
+            0%, 100% {
+                transform: scale(0.5);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                box-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493;
+            }
+            100% {
+                box-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493, 0 0 35px #ff69b4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Configuración de las flores
+        const flowerCount = 100;
+        const flowerColors = ['#ff69b4', '#ff1493', '#ff00ff', '#db7093', '#e75480'];
+
+        // Función para generar una flor en una posición aleatoria
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+
+            // Posición aleatoria
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            flower.style.left = `${x}px`;
+            flower.style.top = `${y}px`;
+
+            // Tamaño aleatorio
+            const size = Math.random() * 15 + 5; // Tamaño entre 5px y 20px
+            flower.style.width = `${size}px`;
+            flower.style.height = `${size}px`;
+
+            // Color aleatorio de la flor
+            const color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+            flower.style.background = `radial-gradient(circle, ${color}, #000)`;
+            flower.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}, 0 0 30px ${color}`;
+
+            document.body.appendChild(flower);
+        }
+
+        // Crear las flores dinámicas
+        for (let i = 0; i < flowerCount; i++) {
+            createFlower();
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #FFD700; /* Color dorado */
+            font-size: 48px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FF6347, 0 0 30px #FF4500, 0 0 40px #FF4500;
+            animation: glow 1s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FF6347, 0 0 30px #FF4500, 0 0 40px #FF4500;
+            }
+            to {
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FF6347, 0 0 40px #FF4500, 0 0 50px #FF4500;
+            }
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: blink 1s infinite, move 2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Espacio entre el texto y el corazón */
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotate(-45deg) translate(0, 0);
+            }
+            25% {
+                transform: rotate(-45deg) translate(10px, -10px);
+            }
+            50% {
+                transform: rotate(-45deg) translate(-10px, 10px);
+            }
+            75% {
+                transform: rotate(-45deg) translate(10px, 10px);
+            }
+            100% {
+                transform: rotate(-45deg) translate(0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>TE AMO</h1>
+    <div class="heart"></div>
+</body>
+</html>
